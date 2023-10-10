@@ -31,7 +31,58 @@ Methods:
 
 ```js
 class Stack {
-  // your code goes here
+  constructor(capacity = Infinity) {
+    this.storage = [];
+    this.capacity = capacity;
+  }
+
+  // Getter for length
+  get length() {
+    return this.storage.length;
+  }
+
+  // Method to add an element to the stack
+  add(item) {
+    if (this.length >= this.capacity) {
+      console.log("Stack is overflowing");
+      return;
+    }
+    this.storage.push(item);
+  }
+
+  // Method to remove an element from the stack
+  remove() {
+    if (this.isEmpty()) {
+      console.log("Stack is empty");
+      return;
+    }
+    return this.storage.pop();
+  }
+
+  // Method to return the top element of the stack (peek)
+  peek() {
+    if (this.isEmpty()) {
+      console.log("Stack is empty");
+      return;
+    }
+    return this.storage[this.length - 1];
+  }
+
+  // Method to print all elements of the stack
+  printAll() {
+    if (this.isEmpty()) {
+      console.log("Stack is empty");
+      return;
+    }
+    for (let i = this.length - 1; i >= 0; i--) {
+      console.log(this.storage[i]);
+    }
+  }
+
+  // Method to check if the stack is empty
+  isEmpty() {
+    return this.length === 0;
+  }
 }
 
 // Test 1
