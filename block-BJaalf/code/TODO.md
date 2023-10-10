@@ -6,6 +6,18 @@ Read the article https://codeburst.io/learn-and-understand-recursion-in-javascri
 
 - Write a function named `repeater` that takes an input character and returns that character repeated 5 times using recursion. For example, if the input is 'g', then the output should be 'ggggg'.
 
+
+function repeater(char, count = 5) {
+  // Base case: If count is 0, return an empty string
+  if (count === 0) {
+    return '';
+  }
+
+  // Recursive case: Concatenate the character with the result of repeater
+  // called with count - 1
+  return char + repeater(char, count - 1);
+}
+
 ```js
 // Test
 console.log(repeater('g')); // 'ggggg'
@@ -53,6 +65,18 @@ console.log(recursiveExponent(3, 3)); // 27
 ```
 
 - Write a function `recursiveReverse` that takes an array and uses recursion to return its contents in reverse
+
+function recursiveReverse(arr) {
+  // Base case: If the array has 0 or 1 elements, return a copy of the array.
+  if (arr.length <= 1) {
+    return [...arr];
+  }
+
+  // Recursive case: Return the last element of the array followed by the result
+  // of recursively reversing the rest of the array.
+  const lastElement = arr.pop();
+  return [lastElement, ...recursiveReverse(arr)];
+}
 
 ```js
 // Test
