@@ -31,7 +31,58 @@ Methods:
 
 ```js
 class Queue {
-  // your code goes here
+  constructor(capacity = Infinity) {
+    this.storage = [];
+    this.capacity = capacity;
+  }
+
+  // Getter for length
+  get length() {
+    return this.storage.length;
+  }
+
+  // Method to enqueue an element to the queue
+  enqueue(item) {
+    if (this.length >= this.capacity) {
+      console.log("Queue is overflowing");
+      return;
+    }
+    this.storage.push(item);
+  }
+
+  // Method to dequeue an element from the queue
+  dequeue() {
+    if (this.isEmpty()) {
+      console.log("Queue is empty");
+      return;
+    }
+    return this.storage.shift();
+  }
+
+  // Method to return the front element of the queue (peek)
+  peek() {
+    if (this.isEmpty()) {
+      console.log("Queue is empty");
+      return;
+    }
+    return this.storage[0];
+  }
+
+  // Method to print all elements of the queue
+  printAll() {
+    if (this.isEmpty()) {
+      console.log("Queue is empty");
+      return;
+    }
+    for (const item of this.storage) {
+      console.log(item);
+    }
+  }
+
+  // Method to check if the queue is empty
+  isEmpty() {
+    return this.length === 0;
+  }
 }
 
 // Test 1
